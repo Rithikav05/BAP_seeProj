@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Sedan+SC&display=swap"
+        rel="stylesheet">
+    <head>
+        <title>UNotes Add Note</title>
+        <style>
+            body {
+                background-color: rgb(177, 185, 185);
+                margin: 0;
+                padding: 0;
+                font-family: "Briem Hand", cursive;
+            }
+            nav {
+                font-size: 30px;
+                display: flex;
+                width: 100%;
+                height: 50px;
+                background-color: rgb(25, 82, 112);
+                text-align: center;
+                justify-content: space-evenly;
+                align-items: center;
+                padding: 8px;
+            }
+            .sticky {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            .titles {
+                font-size: 28px;
+                font-weight: lighter;
+            }
+            #bodytxt {
+                margin: 20px;
+                font-size: 18px;
+                text-align: justify;
+            }
+            #mtt {
+                font-size: 22px;
+            }
+            .form-container {
+                margin: 20px;
+                text-align: center;
+            }
+            input[type=text], input[type=date], textarea {
+                width: 80%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+            }
+            input[type=submit] {
+                width: 20%;
+                background-color: rgb(25, 82, 112);
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type=submit]:hover {
+                background-color: #4CAF50;
+            }
+        </style>
+        <script>
+            function showSuccessMessage() {
+                alert("Note added successfully");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="home"></div>
+        <h1 style="text-align: center; margin-top: 20px; font-size: 72px; font-weight: lighter;">UNOTES ADD NOTE</h1>
+
+        <nav id="navbar">
+            <a href="{{url_for('getcontactinfo')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Home</a>
+            <a href="{{url_for('browse')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Browse</a>
+            <a href="{{url_for('addn')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Upload</a>
+            <a href="{{url_for('getcontactinfo')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Information</a>
+            <a href="{{url_for('getcontactinfo')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Contact</a>
+        </nav>
+
+        <article id="bodytxt">
+            <div class="form-container">
+                <!--form method="POST" action="{{url_for('addn')}}" onsubmit="showSuccessMessage()"-->
+                <form method="POST" action="{{url_for('addn')}}">
+                    <label for="author" class="titles">Author:</label><br>
+                    <input type="text" id="author" name="author" required value="{{athr}}"><br>
+
+                    <!--label for="date" class="titles">Date:</label><br>
+                    <input type="date" id="date" name="date" required value="{{date}}"--><br>
+
+                    <label for="subject" class="titles">Subject:</label><br>
+                    <input type="text" id="subject" name="subject" required value="{{subj}}"><br>
+
+                    <label for="title" class="titles">Topic:</label><br>
+                    <input type="text" id="topic" name="topic" required value="{{topc}}"><br>
+
+                    <label for="body" class="titles">Body:</label><br>
+                    <textarea id="body" name="body" rows="10" required>{{cont}}</textarea><br>
+
+                    <input type="submit" name="action_button" value="Add">
+                    <br><br>
+                    <alert>{{addmsg}}</alert>
+
+                </form>
+            </div>
+        </article>
+
+        <!-- <script>
+            window.onscroll = function () { makeSticky() };
+
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+
+            function makeSticky() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky");
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+        </script>-->
+    </body>
+</html>

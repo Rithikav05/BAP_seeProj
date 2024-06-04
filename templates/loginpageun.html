@@ -1,0 +1,46 @@
+<html>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Sedan+SC&display=swap"
+            rel="stylesheet">
+
+            <style>
+                #head1{
+                    font-size: 42px;
+                }
+                #head2{
+                    font-size: 38px;
+                }
+                body {
+                    background-color: rgb(177, 185, 185);
+                    margin: 0;
+                    padding: 0;
+                    font-family: "Briem Hand", cursive;
+                    font-size: 28px;
+                    font-weight: lighter;
+                    text-align: center;
+                }
+
+
+            </style>
+    <head>
+        <p id="head1">UNotes</p>
+        <p id="head2">Log In</p>
+    </head>
+<body>
+    <hr><hr>
+    <div>
+        <form method="POST" action="{{url_for('handlelogin')}}">
+            <br>
+            Username: &emsp;<input type="text" name="username">
+            <br><br>
+            Password: &emsp;<input type="password" name="password">
+            <br><br>
+            <button type="Submit">Submit</button>
+        </form>
+    </div><br><br>
+    <alert>{{a}}</alert>
+</body>
+</html>

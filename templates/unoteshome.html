@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Sedan+SC&display=swap"
+        rel="stylesheet">
+    <head>
+        <title>UNotes</title>
+        <style>
+            body {
+                background-color: rgb(177, 185, 185);
+                margin: 0;
+                padding: 0;
+                font-family: "Briem Hand", cursive;
+
+            }
+            nav {
+                /*font-family: 'Lucida Grande';*/
+                font-size: 30px;
+                display: flex;
+                width: 100%;
+                height: 50px; 
+                background-color: rgb(25, 82, 112);
+                text-align: center;
+                justify-content: space-evenly;
+                align-items: center;
+                padding: 8px;
+            }
+            .sticky {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            div.scroll-container {
+                background-color: #333;
+                overflow: auto;
+                white-space: nowrap;
+                padding: 10px;
+            }
+            div.scroll-container img {
+                padding: 10px;
+            }
+            .titles
+            {
+                font-size: 28px;
+                font-weight: lighter;
+            }
+            #bodytxt
+            {
+                margin: 20px;
+                font-size: 18px;
+                text-align: justify;
+            }
+            #mtt
+            {
+                font-size: 22px;
+
+            }
+        </style>
+    </head>
+    <body >
+        <div id="home"></div>
+        <h1 style="text-align: center; margin-top: 20px;font-size: 72px;font-weight: lighter;">UNOTES</h1>
+
+        <nav id="navbar">
+            <a href="#home" style="text-decoration: none; color: rgb(177, 185, 185);">Home</a>
+            <a href="{{url_for('browse')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Browse</a>
+            <a href="{{url_for('addn')}}" style="text-decoration: none; color: rgb(177, 185, 185);">Upload</a>
+            <a href="#info" style="text-decoration: none; color: rgb(177, 185, 185);">Information</a>
+            <a href="#contact" style="text-decoration: none; color: rgb(177, 185, 185);">Contact</a>
+        </nav>
+
+        <article id="bodytxt" >
+            <div>
+                <p class="titles">Home</p>
+                <span> &emsp;&emsp; UNotes is an innovative online platform designed to enhance the learning experience by enabling 
+                    both students and teachers to upload and share educational notes. This collaborative resource aims 
+                    to build a comprehensive knowledge repository accessible to users at any time, facilitating continuous 
+                    learning and revision. By allowing contributors to upload notes, UNotes fosters a community-driven 
+                    environment where knowledge is not only consumed but also enriched by collective input. This feature
+                     is especially beneficial for students who seek diverse perspectives and supplementary materials to 
+                     reinforce their understanding of complex topics. Additionally, teachers can use the platform to 
+                     provide additional resources and guidance, ensuring their students have the most relevant and useful 
+                     information at their fingertips. UNotes represents a significant step forward in educational tools by
+                      promoting an inclusive, supportive, and interconnected learning atmosphere.</span>
+            </div>
+            <div id="browse"></div>
+            <hr><hr>
+            <p class="titles">Browse</p>
+            <br>
+            <div class="scroll-container" >
+                <img src= "{{url_for('static',filename='images/IMG-20240508-WA0019.jpg')}}">
+                <img src="{{url_for('static',filename='images/IMG-20240508-WA0020.jpg')}}" >
+                <img src="{{url_for('static',filename='images/IMG-20240508-WA0021.jpg')}}">
+                <img src="{{url_for('static',filename='images/IMG-20240508-WA0022.jpg')}}">
+                <img src="{{url_for('static',filename='images/IMG-20240508-WA0023.jpg')}}">
+            </div>
+            <div id="info"></div>
+            <hr><hr>
+            <div>
+                <p class="titles">Information</p>
+                <p id="mtt">Meet the team!!</p>
+                <p>
+                    Rithika Vinod <br> Email: rithikav.btech23@rvu.edu.in<br><br>
+                    Riya More  <br>Email: riyamore.btech23@rvu.edu.in<br><br>
+                    S Anannya <br> Email: sanannya.btech23@rvu.edu.in<br><br>
+                    Sanjana Kulkarni <br> Email : sanjanak.btech23@rvu.edu.in<br><br>
+                 </p>
+            </div>
+            <hr><hr>
+            <div id="contact">
+                <p class="titles">Contact</p>
+                <form method="POST" action="{{url_for('getcontactinfo')}}">
+                    <fieldset>
+                        <legend>Contact</legend><br>
+                        Name:<input type="text" name="fname" value={{fn}}><br><br>
+                        Surname:<input type="text" name="lname" value={{ln}}><br><br>
+                        Phone number:<input type="number" name="phoneno" value={{pn}}><br><br>
+                        Email ID:<input type="email" name="emailid" value={{em}}><br><br>
+                        <input type="submit" name="action_button" value="Submit"></input>
+                    </fieldset>
+                </form>
+            </div>
+        </article>
+    </body>
+<script>
+    window.onscroll = function () { makeSticky() };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function makeSticky() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+</html>
