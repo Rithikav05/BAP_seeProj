@@ -110,7 +110,7 @@ class CIS:
             createq='CREATE TABLE IF NOT EXISTS nts'
             global idd
             idd=0
-            createq+='(ID primary key, Author text, Subject text, Topic text, Content text)'
+            createq+='(Author text primary key, Subject text, Topic text, Content text)'
             self.crsr.execute(createq)
 
         except sqlite3.Error as e:
