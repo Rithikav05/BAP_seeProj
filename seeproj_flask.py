@@ -99,8 +99,11 @@ def searchn():
          retval=ntsobj.SearchN(skword)
          #ctiobj.Search(search)
          print("Yay")
+         prtval=[]
+         for i in retval:
+             prtval.append(i[1:])
 
-    return(render_template("searching.html",rtv=retval))
+    return(render_template("searching.html",rtv=prtval))
 
 if __name__=="__main__":
     app.run(port=9000) 
