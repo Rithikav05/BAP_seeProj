@@ -1,5 +1,5 @@
 import sqlite3, sys
-
+global idd
 class CIS:
     def __init__(self):
         self.conn=""
@@ -108,6 +108,8 @@ class CIS:
     def CreateTableNotes(self):
         try:
             createq='CREATE TABLE IF NOT EXISTS nts'
+            global idd
+            idd=0
             createq+='(ID primary key, Author text, Subject text, Topic text, Content text)'
             self.crsr.execute(createq)
 
@@ -116,10 +118,12 @@ class CIS:
 
     def AddN(self,author,subject,topic,content):
         try:
+            global idd
             addq="INSERT INTO nts (Author, Subject, Topic, Content) VALUES (?, ?, ?,?)"
             self.crsr.execute(addq, (author,subject,topic,content))
             self.conn.commit()
             msg="Note added successfully."
+            idd+=1
             return(msg)
 
         except sqlite3.Error as er:
